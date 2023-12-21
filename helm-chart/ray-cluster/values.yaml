@@ -6,8 +6,8 @@
 # in this Helm chart.
 
 image:
-  repository: rayproject/ray
-  tag: 2.7.0
+  repository: eu.gcr.io/cingulait-research/ray-custom
+  tag: latest
   pullPolicy: IfNotPresent
 
 nameOverride: "kuberay"
@@ -72,12 +72,12 @@ head:
   # for further guidance.
   resources:
     limits:
-      cpu: "1"
+      cpu: "10"
       # To avoid out-of-memory issues, never allocate less than 2G memory for the Ray head.
-      memory: "2G"
+      memory: "20G"
     requests:
-      cpu: "1"
-      memory: "2G"
+      cpu: "10"
+      memory: "20G"
   annotations: {}
   nodeSelector: {}
   tolerations: []
@@ -130,11 +130,11 @@ worker:
   # for further guidance.
   resources:
     limits:
-      cpu: "1"
-      memory: "1G"
+      cpu: "10"
+      memory: "20G"
     requests:
-      cpu: "1"
-      memory: "1G"
+      cpu: "10"
+      memory: "20G"
   annotations: {}
   nodeSelector: {}
   tolerations: []
@@ -190,11 +190,11 @@ additionalWorkerGroups:
   # for further guidance.
     resources:
       limits:
-        cpu: 1
-        memory: "1G"
+        cpu: 10
+        memory: "20G"
       requests:
-        cpu: 1
-        memory: "1G"
+        cpu: 10
+        memory: "20G"
     annotations: {}
     nodeSelector: {}
     tolerations: []
